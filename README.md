@@ -1,34 +1,30 @@
-<<<<<<< HEAD
-# React + TypeScript + Vite
+# Nombre de tu Proyecto
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicación de Gestión de Eventos
 
-Currently, two official plugins are available:
+## Requisitos Previos
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Asegúrate de tener Node.js y npm instalados.
 
-## Expanding the ESLint configuration
+- Node.js: [Descargar Node.js](https://nodejs.org/)
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Instalación
 
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+```bash
+git clone https://github.com/sergeavila7/app-events.git
+cd app-events
+npm install
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
-=======
-# app-events
->>>>>>> 5a2349e83c172eea560f8644c43f46010b7ae67b
+Uso
+Desarrollo
+npm run dev
+Abre http://localhost:5173 en tu navegador.
+
+Licencia
+Este proyecto está bajo la Licencia MIT. Consulta LICENSE.md para más detalles.
+
+Contacto
+Autor: sergeavila7
+Email: tu@email.com
+¡Gracias por usar la Aplicación de Gestión de Eventos!

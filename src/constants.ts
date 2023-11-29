@@ -26,6 +26,6 @@ export const initialState: Event[] = [
       name: 'Reunión de Equipo',
       dateTime: 'Monday, 2023-04-05 10:00',
       description:
-        'Reunión mensual para discutir el progreso del equipo y nuevos proyectos.',
+        'Presentación del nuevo producto de la empresa.',
     },
   ];
