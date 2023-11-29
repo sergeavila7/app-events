@@ -66,3 +66,7 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+.css-o9k5xi-MuiInputBase-root-MuiOutlinedInput-root {
+  width: 400px;
+}

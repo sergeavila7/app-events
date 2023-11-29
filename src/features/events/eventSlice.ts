@@ -1,32 +1,32 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { PayloadAction, createSlice } from '@reduxjs/toolkit';
+import { initialState } from '../../constants';
 
 export interface Event {
-  id: number;
+  id?: string;
   name: string;
-  date: string;
-  time: string;
+  dateTime: string;
   description: string;
 }
-
+interface DeleteEventPayload {
+  id: string;
+}
 export interface EventsState {
   events: Event[];
 }
-
-const initialState: EventsState = {
-  events: [
-    { id: 1, name: '1', date: '1', time: '', description: '' },
-    { id: 2, name: '1', date: '1', time: '', description: '' },
-  ],
-};
 
 export const eventSlice = createSlice({
   name: 'events',
   initialState,
   reducers: {
-    // Aquí puedes agregar tus acciones si las necesitas en el futuro
+    addEvent: (state, action: PayloadAction<Event>) => {
+      state.push(action.payload);
+    },
+    deleteEvent: (state, action: PayloadAction<DeleteEventPayload>) => {
+      const { id } = action.payload;
+      return state.filter((event) => event.id !== id);
+    },
   },
 });
 
-// Exporta el reducer y las acciones si las necesitas
-// export const { addEvent } = eventSlice.actions;
+export const { addEvent,deleteEvent } = eventSlice.actions;
 export default eventSlice.reducer;
