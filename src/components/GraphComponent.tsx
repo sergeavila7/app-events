@@ -1,9 +1,8 @@
 import Plot from 'react-plotly.js';
 import { useEvents } from '../hooks/useEvents';
 import dayjs from 'dayjs';
-
 const GraphComponent = () => {
-  const { events } = useEvents();
+  const { events, isSmallScreen } = useEvents();
 
   const months = events.map((event) => dayjs(event.dateTime).format('MMMM'));
 
@@ -16,12 +15,14 @@ const GraphComponent = () => {
   const labels = Object.keys(monthCounts);
 
   return (
-    <div>
-      <Plot
-        data={[{ values, labels, type: 'pie' }]}
-        layout={{ width: 500, height: 500, title: 'Eventos por Mes' }}
-      />
-    </div>
+    <Plot
+      data={[{ values, labels, type: 'pie' }]}
+      layout={{
+        width: isSmallScreen ? 300 : 500,
+        height: isSmallScreen ? 300 : 500,
+        title: 'Eventos por Mes',
+      }}
+    />
   );
 };
 

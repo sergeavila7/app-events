@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useTheme, useMediaQuery } from '@mui/material';
 import { v4 as uuid } from 'uuid';
 import {
   Event,
@@ -9,6 +10,10 @@ import {
 } from '../features/events/eventSlice';
 
 export const useEvents = () => {
+  const theme = useTheme();
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
+
+
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -32,6 +37,7 @@ export const useEvents = () => {
     open,
     events,
     isAvailable,
+    isSmallScreen,
     handleDelete,
     handleChange,
     handleOpen,

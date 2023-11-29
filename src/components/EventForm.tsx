@@ -14,14 +14,15 @@ interface EventFormProps {
 }
 
 const EventForm: FC<EventFormProps> = ({ open, handleClose }) => {
-  const { handleChange } = useEvents();
+  const { handleChange, isSmallScreen } = useEvents();
 
   const style = {
     position: 'absolute',
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: 400,
+    width: isSmallScreen ? '100%' : 400,
+    maxWidth: isSmallScreen ? 320 : '100%', // Establecer maxWidth a 320 cuando la pantalla es pequeña
     bgcolor: 'background.paper',
     border: '2px solid #000',
     boxShadow: 24,
@@ -45,7 +46,7 @@ const EventForm: FC<EventFormProps> = ({ open, handleClose }) => {
       <Fade in={open}>
         <Box sx={style}>
           <Typography variant='h5' mb={2} color='primary'>
-            Agregar Evento
+            Formulario evento
           </Typography>
           <Formik
             initialValues={{ name: '', description: '', dateTime: '' }}

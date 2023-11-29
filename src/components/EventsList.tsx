@@ -4,19 +4,21 @@ import AddCircleOutlinedIcon from '@mui/icons-material/AddCircleOutlined';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EventBusyIcon from '@mui/icons-material/EventBusy';
 import { useEvents } from '../hooks/useEvents';
+import MapComponent from './MapComponent';
 interface EventListProps {
   handleOpen: () => void;
 }
 
 const EventsList: FC<EventListProps> = ({ handleOpen }) => {
-  const { isAvailable, handleDelete, events } = useEvents();
+  const { isAvailable, handleDelete, events, isSmallScreen } = useEvents();
 
   return (
     <div>
       <Box
         sx={{
           display: 'flex',
-          justifyContent: isAvailable ? 'space-between' : 'center',
+          justifyContent: isSmallScreen ? 'center' : 'space-between',
+          flexDirection: isSmallScreen ? 'column' : 'row',
         }}
       >
         {isAvailable && (
@@ -73,6 +75,7 @@ const EventsList: FC<EventListProps> = ({ handleOpen }) => {
                     Eliminar evento
                   </Button>
                 </Box>
+                <MapComponent />
               </Card>
             </div>
           ))

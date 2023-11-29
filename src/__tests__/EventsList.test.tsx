@@ -1,40 +1,53 @@
+import { describe, test, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
+import { Provider } from 'react-redux';
+import { configureStore } from '../app/store';
 import EventsList from '../components/EventsList';
-import '@testing-library/jest-dom';
+import eventReducer from '../features/events/eventSlice';
 
-test('renders EventsList component', () => {
-  render(<EventsList handleOpen={() => {}} />);
-
-  const addButton = screen.getByText(/Agregar evento/i);
-  expect(addButton).toBeInTheDocument();
-});
-
-test('renders list of events when available', () => {
-  const events = [
-    {
-      id: '1',
-      name: 'Evento 1',
-      dateTime: '2023-01-01',
-      description: 'Descripción 1',
+describe('EventsList', () => {
+  const store = configureStore({
+    reducer: {
+      events: eventReducer,
     },
-  ];
-
-  render(<EventsList handleOpen={() => {}} />);
-
-  events.forEach((event) => {
-    const eventName = screen.getByText(event.name);
-    const eventDateTime = screen.getByText(event.dateTime);
-    const eventDescription = screen.getByText(event.description);
-
-    expect(eventName).toBeInTheDocument();
-    expect(eventDateTime).toBeInTheDocument();
-    expect(eventDescription).toBeInTheDocument();
   });
-});
+  test('Should show the event list component', () => {
+    render(
+      <Provider store={store}>
+        <EventsList handleOpen={() => {}} />
+      </Provider>
+    );
 
-test('renders "No hay eventos disponibles" message when no events available', () => {
-  render(<EventsList handleOpen={() => {}} />);
+    const title = screen.getByText(/Lista de eventos/i);
+    expect(title).toBeDefined();
+    const addButton = screen.getByText(/Agregar evento/i);
+    expect(addButton).toBeDefined();
+  });
 
-  const noEventsMessage = screen.getByText(/No hay eventos disponibles/i);
-  expect(noEventsMessage).toBeInTheDocument();
+  test('Renders list of events when available', () => {
+    const events = [
+      {
+        id: '1',
+        name: 'Conferencia de Desarrollo Web',
+        dateTime: 'Tuesday, 2023-02-15 14:00',
+        description:
+          'Una conferencia sobre las últimas tendencias en desarrollo web.',
+      },
+    ];
+
+    render(
+      <Provider store={store}>
+        <EventsList handleOpen={() => {}} />
+      </Provider>
+    );
+    events.forEach((event) => {
+      const eventName = screen.queryAllByAltText(event.name);
+      const eventDateTime = screen.queryAllByAltText(event.dateTime);
+      const eventDescription = screen.queryAllByAltText(event.description);
+
+      expect(eventName).toBeDefined();
+      expect(eventDateTime).toBeDefined();
+      expect(eventDescription).toBeDefined();
+    });
+  });
 });

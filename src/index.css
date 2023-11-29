@@ -71,7 +71,15 @@ button:focus-visible {
   width: 400px;
 }
 
-.css-1gsv261 {
-    border-bottom: 1px solid;
-    border-color: rgb(255 255 255 / 12%) !important;
+@media (max-width: 320px) {
+  .css-o9k5xi-MuiInputBase-root-MuiOutlinedInput-root {
+    width: 320px !important;
+  }
 }
+
+
+.css-1gsv261 {
+  border-bottom: 1px solid;
+  border-color: rgb(255 255 255 / 12%) !important;
+}
+
