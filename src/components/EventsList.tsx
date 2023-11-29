@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { Card, CardContent, Typography, Button, Box } from '@mui/material';
+import { Box, Card, CardContent, Typography, Button } from '@mui/material';
 import AddCircleOutlinedIcon from '@mui/icons-material/AddCircleOutlined';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EventBusyIcon from '@mui/icons-material/EventBusy';
@@ -45,7 +45,7 @@ const EventsList: FC<EventListProps> = ({ handleOpen }) => {
           events.map((event) => (
             <div
               key={event.id}
-              style={{ flex: '1 0 300px', maxWidth: '310px' }}
+              style={{ flex: '1 0 280px', maxWidth: '280px' }}
             >
               <Card
                 style={{
